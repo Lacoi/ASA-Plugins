@@ -1,7 +1,7 @@
 {
   "FullName": "Admins permissions - Ascended",
-  "Description": "Configure admins permissions",
-  "Version": 1.0,
+  "Description": "Configure admins permissions and discord logging",
+  "Version": 1.1,
   "MinApiVersion": 1.19,
   "Dependencies": [
     "Permissions"

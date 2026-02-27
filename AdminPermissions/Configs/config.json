@@ -1,5 +1,11 @@
 {
   "PrintToChat": true,
+  "DiscordWebhook": {
+    "Enabled": false,
+    "URL": "",
+    "SenderName": "AdminsPermissions",
+    "Message": "[{timestamp}] {charactername} ({eos_id}) used /cheat {command} on {map} at {location}"
+  },
   "Messages": {
     "Sender": "AdminsPermissions",
     "LogMsg": "Admin '{0}' Command: {1}",
