@@ -90,7 +90,9 @@ namespace ArkShop::Store
 									false,
 									true,
 									false,
-									false
+									false,
+									false,
+									AsaApi::GetApiUtils().GetWorld()
 								)
 							);
 						}
@@ -100,7 +102,7 @@ namespace ArkShop::Store
 					else
 					{
 						int totalAmount = amount * default_amount;
-						playerInventory->IncrementItemTemplateQuantity(itemClass, totalAmount, true, force_blueprint, nullptr, nullptr, false, false, false, false, true, false, false, false, false, nullptr);
+						playerInventory->IncrementItemTemplateQuantity(itemClass, totalAmount, true, force_blueprint, nullptr, nullptr, false, false, false, false, true, false, false, false, false, false, nullptr);
 					}
 				}
 			}
