@@ -62,7 +62,7 @@ namespace ArkShop::Store
 					}
 				}
 
-				UPrimalInventoryComponent* playerInventory = player_controller->GetPlayerInventoryComponent();
+				UPrimalInventoryComponent* playerInventory = player_controller->GetPlayerInventory();
 				if (playerInventory)
 				{
 					if (stacksInOne || force_blueprint)

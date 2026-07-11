@@ -440,9 +440,9 @@ bool ArkShop::GiveDino(AShooterPlayerController* player_controller, int level, b
 				item->SetCustomItemData(&customItemData);
 				item->UpdatedItem(true, false);
 
-				if (player_controller->GetPlayerInventoryComponent())
+				if (player_controller->GetPlayerInventory())
 				{
-					UPrimalItem* item2 = player_controller->GetPlayerInventoryComponent()->AddItemObject(item);
+					UPrimalItem* item2 = player_controller->GetPlayerInventory()->AddItemObject(item);
 					
 					if (item2)
 						success = true;

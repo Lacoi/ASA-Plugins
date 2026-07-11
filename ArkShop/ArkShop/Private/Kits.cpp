@@ -302,7 +302,7 @@ namespace ArkShop::Kits
 				return;
 			}
 
-			if (player_controller->GetPlayerInventoryComponent() && player_controller->GetPlayerInventoryComponent()->IsAtMaxInventoryItems())
+			if (player_controller->GetPlayerInventory() && player_controller->GetPlayerInventory()->IsAtMaxInventoryItems())
 			{
 				AsaApi::GetApiUtils().SendChatMessage(player_controller, GetText("Sender"),
 					*GetText("InventoryIsFull"));
