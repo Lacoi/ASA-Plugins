@@ -23,7 +23,7 @@
 #pragma comment(lib, "Permissions.lib")
 
 DECLARE_HOOK(AShooterGameMode_HandleNewPlayer, bool, AShooterGameMode*, AShooterPlayerController*, UPrimalPlayerData*, AShooterCharacter*, bool);
-DECLARE_HOOK(AShooterGameMode_Logout, void, AShooterGameMode*, AController*);
+DECLARE_HOOK(AShooterGameMode_OnLogout, void, AShooterGameMode*, AController*);
 DECLARE_HOOK(URCONServer_Init, bool, URCONServer*, FString, int, UShooterCheatManager*);
 
 FString closed_store_reason;
@@ -591,7 +591,7 @@ bool Hook_AShooterGameMode_HandleNewPlayer(AShooterGameMode* _this, AShooterPlay
 	return AShooterGameMode_HandleNewPlayer_original(_this, new_player, player_data, player_character, is_from_login);
 }
 
-void Hook_AShooterGameMode_Logout(AShooterGameMode* _this, AController* exiting)
+void Hook_AShooterGameMode_OnLogout(AShooterGameMode* _this, AController* exiting)
 {
 	// Remove player from the online list
 
@@ -599,7 +599,7 @@ void Hook_AShooterGameMode_Logout(AShooterGameMode* _this, AController* exiting)
 
 	ArkShop::TimedRewards::Get().RemovePlayer(eos_id);
 
-	AShooterGameMode_Logout_original(_this, exiting);
+	AShooterGameMode_OnLogout_original(_this, exiting);
 }
 
 FString ArkShop::GetText(const std::string& str)
@@ -752,7 +752,7 @@ void Load()
 		}
 
 		AsaApi::GetHooks().SetHook("AShooterGameMode.HandleNewPlayer_Implementation(AShooterPlayerController*,UPrimalPlayerData*,AShooterCharacter*,bool)", &Hook_AShooterGameMode_HandleNewPlayer, &AShooterGameMode_HandleNewPlayer_original);
-		AsaApi::GetHooks().SetHook("AShooterGameMode.Logout(AController*)", &Hook_AShooterGameMode_Logout, &AShooterGameMode_Logout_original);
+		AsaApi::GetHooks().SetHook("AShooterGameMode.OnLogout(AController*)", &Hook_AShooterGameMode_OnLogout, &AShooterGameMode_OnLogout_original);
 
 		AsaApi::GetCommands().AddConsoleCommand("ArkShop.Reload", &ReloadConfig);
 		AsaApi::GetCommands().AddRconCommand("ArkShop.Reload", &ReloadConfigRcon);
@@ -773,7 +773,7 @@ void Unload()
 	}
 
 	AsaApi::GetHooks().DisableHook("AShooterGameMode.HandleNewPlayer_Implementation(AShooterPlayerController*,UPrimalPlayerData*,AShooterCharacter*,bool)", &Hook_AShooterGameMode_HandleNewPlayer);
-	AsaApi::GetHooks().DisableHook("AShooterGameMode.Logout(AController*)", &Hook_AShooterGameMode_Logout);
+	AsaApi::GetHooks().DisableHook("AShooterGameMode.OnLogout(AController*)", &Hook_AShooterGameMode_OnLogout);
 
 	AsaApi::GetCommands().RemoveConsoleCommand("ArkShop.Reload");
 	AsaApi::GetCommands().RemoveRconCommand("ArkShop.Reload");
